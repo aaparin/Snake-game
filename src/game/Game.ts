@@ -27,13 +27,13 @@ export class Game {
   }
 
   private generateFood(): void {
-    // Получаем все позиции змейки
+    // get snake positions
     const snakePositions = this.snake.getBody();
     let newFood: Position;
 
     do {
       newFood = Random.getRandomPosition(CONFIG.BOARD_WIDTH, CONFIG.BOARD_HEIGHT);
-      // Проверяем, что еда не появилась на змейке
+      // check if food is not on snake
     } while (snakePositions.some(pos => pos.x === newFood.x && pos.y === newFood.y));
 
     this.food = newFood;
@@ -132,7 +132,7 @@ export class Game {
     }
 
 
-    // Обновляем отображение змейки на доске
+    // update snake body on board
     const body = this.snake.getBody();
     body.forEach((segment, index) => {
       if (index === 0) {
@@ -142,7 +142,7 @@ export class Game {
       }
     });
 
-    // Отображаем еду
+
     if (this.food) {
       this.board.setCell(this.food, CONFIG.CELL_FOOD);
     }

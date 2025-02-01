@@ -61,6 +61,7 @@ export class Snake {
         };
         break;
     }
+
   
     this.body.unshift(newHead);
   
